@@ -17,7 +17,8 @@ function createMainWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1100,
 		height: 800,
-		show: false,
+        show: false,
+        backgroundColor: 'white',
 		icon: './assets/icons/icon.png',
 		webPreferences: {
 			nodeIntegration: true,
