@@ -6,15 +6,24 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-const AddLogItem = () => {
+const AddLogItem = ( {addItem }) => {
     const [text, setText] = useState('');
     const [user, setUser] = useState('');
     const [priority, setPriority] = useState('');
 
+    const onSubmit = e =>{
+        e.preventDefault();
+        addItem({text, user, priority});
+
+        setText('')
+        setPriority('')
+        setUser('')
+    }
+
     return (
         <Card>
             <Card.Body>
-                <Form className='my-3'>
+                <Form onSubmit={onSubmit} className='my-3'>
                     <Row>
                         <Col>
                             <Form.Control placeholder='Log' value={text} onChange={e=> setText(e.target.value)} />
