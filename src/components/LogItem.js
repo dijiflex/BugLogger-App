@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge'
+import Badge from 'react-bootstrap/Badge';
+import Moment from 'react-moment';
 
 const LogItem = ({key, log : {priority , _id, user, text, created}}) => {
     const setVariant = ()=>{
@@ -18,7 +19,7 @@ const LogItem = ({key, log : {priority , _id, user, text, created}}) => {
             <td> <Badge variant={setVariant()} className='p-2'> { priority.charAt(0).toUpperCase() + priority.slice(1)} </Badge> </td>
             <td>{text}</td>
             <td>{user}</td>
-            <td>{created}</td>
+            <td> <Moment format='MMMM Do YYYY, h:mm:ss a'>{new Date(created)}</Moment> </td>
             <td><Button variant='danger' size='sm' > x </Button></td>
         </tr>
     )
