@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
@@ -31,9 +29,11 @@ const App = () => {
             return false
         }
 
-    item._id = Math.floor(Math.random() * 90000) +1000
-    item.created = new Date().toString()
-      setLogs([...logs, item]);
+    // item._id = Math.floor(Math.random() * 90000) +1000
+    // item.created = new Date().toString()
+    //   setLogs([...logs, item]);
+
+    ipcRenderer.send('logs:add', item)
       showAlert('Log Added')
     }
 
