@@ -1,7 +1,8 @@
 const path = require('path')
 const url = require('url')
 const { app, BrowserWindow } = require('electron');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+const Log = require('./models/logs')
 
 //connectDB
  connectDB();
