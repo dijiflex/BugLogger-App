@@ -36,9 +36,10 @@ const App = () => {
     ipcRenderer.send('logs:add', item)
       showAlert('Log Added')
     }
-
+    
     function deleteItem(_id){
-        setLogs(logs.filter(item => item._id !== _id));
+        // setLogs(logs.filter(item => item._id !== _id));
+        ipcRenderer.send('logs:delete', _id)
         showAlert('Log Removed')
     }
 
