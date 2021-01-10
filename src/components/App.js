@@ -20,7 +20,12 @@ const App = () => {
 
     useEffect(()=>{
         ipcRenderer.send('logs:load');
-        ipcRenderer.on('logs:get', (e, logs) => { setLogs(JSON.parse(logs)) })
+        ipcRenderer.on('logs:get', (e, logs) => { setLogs(JSON.parse(logs)) });
+
+        ipcRenderer.on('logs:clear', ()=> {
+            setLogs([])
+            showAlert('Logs cleared')
+        })
     }, [])
 
     function addItem (item) {
@@ -36,7 +41,7 @@ const App = () => {
     ipcRenderer.send('logs:add', item)
       showAlert('Log Added')
     }
-    
+
     function deleteItem(_id){
         // setLogs(logs.filter(item => item._id !== _id));
         ipcRenderer.send('logs:delete', _id)
